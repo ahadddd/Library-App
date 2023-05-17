@@ -1,0 +1,62 @@
+<div class="container">
+
+  <table>
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Title</td>
+        <td>Author</td>
+        <td>Category</td>
+        <td>Tags</td>
+        <td>Status</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of books; let i=index" >
+        <td>{{item.id}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.author}}</td>
+        <td>{{item.category}}</td>
+        <td>{{item.tags}}</td>
+        <td>{{item.status}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="controls">
+    <button (click)="addBook()" class="btnCtrl">Add Book</button>
+    <button class="btnCtrl">Issue Book</button>
+  </div>
+</div>
+
+<div *ngIf="bookModal" class="addModal">
+
+  <form (ngSubmit)="addBook()" [formGroup]="formData">
+    <p id="formTitle">Enter Book Details</p>
+    <input type="text" placeholder="Enter Title..." formControlName="title">
+    <input type="text" placeholder="Enter Author's Name..." formControlName="author">
+    <input type="text" placeholder="Enter Category..." formControlName="category">
+    <input type="text" placeholder="Enter Tags..." formControlName="tags">
+    <select formControlName="status">
+      <option value="0">Unavailable</option>
+      <option value="1">Available</option>
+
+    </select>
+
+    <button type="submit" id="addBtn" >Add Book</button>
+
+  </form>
+</div>

@@ -25,6 +25,6 @@ user and hence updating the status of book as unavailable. This form will have f
 
 Book ID will be a dropdown, which will display Book Title as text and book ID will
 be used as value e.g. 
-<option [value]="book.id">{{ book.title }}</option
+<option [value]="book.id">{{ book.title }}</option>
 
-Make  another table to display list of all users along with books they have issued from library. 
+Make another table to display list of all users along with books they have issued from library. 
