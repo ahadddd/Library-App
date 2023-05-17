@@ -1,0 +1,30 @@
+Library
+Make a form to store books. We need to store following information for each book:
+ID (number),
+Title,
+Author,
+Category,
+Tags,
+Status
+
+Status can be 0 or 1, 
+0 = book not available
+1 = book is available
+
+Make a table to display list of all books. On top of table display a dropdown called "Status"
+This dropdown will be use to filter out books displayed in table. Like if user selects
+"Available books Only" then table will show only available books.
+The Status drop will have three options:
+ - All books
+ - Show available books
+ - Show unavailable books
+
+Create another form called "Book Issuance". This fill will be used to issue any book to some
+user and hence updating the status of book as unavailable. This form will have following fields:
+    Book ID, User name, Issue Date
+
+Book ID will be a dropdown, which will display Book Title as text and book ID will
+be used as value e.g. 
+<option [value]="book.id">{{ book.title }}</option
+
+Make  another table to display list of all users along with books they have issued from library. 
