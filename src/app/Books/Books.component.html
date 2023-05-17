@@ -47,16 +47,16 @@
   <form (ngSubmit)="addBook()" [formGroup]="formData">
     <p id="formTitle">Enter Book Details</p>
     <input type="text" placeholder="Enter Title..." formControlName="title">
+    <!-- <p *ngIf="book['title'].errors?.hasOwnProperty('required')">Field is required.</p> -->
     <input type="text" placeholder="Enter Author's Name..." formControlName="author">
     <input type="text" placeholder="Enter Category..." formControlName="category">
     <input type="text" placeholder="Enter Tags..." formControlName="tags">
     <select formControlName="status">
       <option value="0">Unavailable</option>
       <option value="1">Available</option>
-
     </select>
 
-    <button type="submit" id="addBtn" >Add Book</button>
+    <button type="submit" id="addBtn">Add Book</button>
 
   </form>
 </div>
