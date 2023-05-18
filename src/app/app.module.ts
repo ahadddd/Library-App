@@ -9,6 +9,7 @@ import { UsersComponent } from './Users/Users.component';
 import { CommonModule } from '@angular/common';
 import { UserDataService } from './UserData.service';
 import { ArrayToTDPipe } from './Users/ArraytoTD.pipe';
+import { BookDataService } from './Books/BookData.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { ArrayToTDPipe } from './Users/ArraytoTD.pipe';
       }
     ])
   ],
-  providers: [UserDataService],
+  providers: [UserDataService, BookDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
