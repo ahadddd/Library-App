@@ -1,5 +1,4 @@
 <div class="container">
-
   <table>
     <thead>
       <tr>
@@ -13,41 +12,29 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let item of books; let i=index" >
-        <td>{{item.id}}</td>
-        <td>{{item.title}}</td>
-        <td>{{item.author}}</td>
-        <td>{{item.category}}</td>
-        <td>{{item.tags}}</td>
-        <td>{{item.status}}</td>
+      <tr *ngFor="let item of books; let i = index">
+        <td class="tData">{{ item.Id }}</td>
+        <td class="tData">{{ item.title }}</td>
+        <td class="tData">{{ item.author }}</td>
+        <td class="tData">{{ item.category }}</td>
+        <td class="tData">{{ item.tags }}</td>
+        <td class="tData">{{ item.status }}</td>
       </tr>
     </tbody>
   </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
   <div class="controls">
-    <button (click)="addBook()" class="btnCtrl">Add Book</button>
-    <button class="btnCtrl">Issue Book</button>
+    <!-- <button (click)="addBook()" class="btnCtrl">Add Book</button> -->
+    <button class="btnCtrl" (click)="toggleModal()">Issue Book</button>
   </div>
 </div>
 
-<div *ngIf="bookModal" class="addModal">
+<!-- <div *ngIf="bookModal" class="addModal">
 
   <form (ngSubmit)="addBook()" [formGroup]="formData">
     <p id="formTitle">Enter Book Details</p>
     <input type="text" placeholder="Enter Title..." formControlName="title">
-    <!-- <p *ngIf="book['title'].errors?.hasOwnProperty('required')">Field is required.</p> -->
+    <p *ngIf="book['title'].errors?.hasOwnProperty('required')">Field is required.</p> 
     <input type="text" placeholder="Enter Author's Name..." formControlName="author">
     <input type="text" placeholder="Enter Category..." formControlName="category">
     <input type="text" placeholder="Enter Tags..." formControlName="tags">
@@ -58,5 +45,27 @@
 
     <button type="submit" id="addBtn">Add Book</button>
 
+  </form>
+</div> -->
+
+<div *ngIf="issueModal" class="issueModal">
+  <form (ngSubmit)="issueBook()" [formGroup]="issueData">
+    <select formControlName="user_id">
+      <option
+        *ngFor="let user of users"
+        [value]="user.id"
+      >
+        {{ user.name }}
+      </option>
+    </select>
+    <select formControlName="book_id">
+      <option
+        *ngFor="let book of books"
+        [value]="book.Id"
+      >
+        {{ book.title }}
+      </option>
+    </select>
+    <button id="issueBtn">Issue Book</button>
   </form>
 </div>

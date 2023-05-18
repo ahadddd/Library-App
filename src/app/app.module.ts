@@ -6,17 +6,19 @@ import { AppComponent } from './main/app.component';
 import { BooksComponent } from './Books/Books.component';
 import { RouterModule } from '@angular/router';
 import { UsersComponent } from './Users/Users.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [		
+  declarations: [
     AppComponent,
-      BooksComponent,
-      UsersComponent
-   ],
+    BooksComponent,
+    UsersComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,
-      ReactiveFormsModule,
+    CommonModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {
         path: '',
