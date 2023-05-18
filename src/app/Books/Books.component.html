@@ -1,4 +1,14 @@
 <div class="container">
+  <form class="filterForm" (ngSubmit)="filterBooks()" [formGroup]="filterData">
+    <select formControlName="filterValue">
+      <option value="all">Show All</option>
+      <option value="available">Show Available</option>
+      <option value="unavailable">Show Unavailable</option>
+      
+    </select>
+    <button class="filterBtn" type="submit">Filter</button>
+  </form>
+
   <table>
     <thead>
       <tr>
@@ -11,8 +21,30 @@
       </tr>
     </thead>
 
-    <tbody>
+    <tbody *ngIf="showAll">
       <tr *ngFor="let item of books; let i = index">
+        <td class="tData">{{ item.Id }}</td>
+        <td class="tData">{{ item.title }}</td>
+        <td class="tData">{{ item.author }}</td>
+        <td class="tData">{{ item.category }}</td>
+        <td class="tData">{{ item.tags }}</td>
+        <td class="tData">{{ item.status }}</td>
+      </tr>
+    </tbody>
+
+    <tbody *ngIf="showUnavailable">
+      <tr *ngFor="let item of unavailableBooks; let i = index">
+        <td class="tData">{{ item.Id }}</td>
+        <td class="tData">{{ item.title }}</td>
+        <td class="tData">{{ item.author }}</td>
+        <td class="tData">{{ item.category }}</td>
+        <td class="tData">{{ item.tags }}</td>
+        <td class="tData">{{ item.status }}</td>
+      </tr>
+    </tbody>
+
+    <tbody *ngIf="showAvailable">
+      <tr *ngFor="let item of availableBooks; let i = index">
         <td class="tData">{{ item.Id }}</td>
         <td class="tData">{{ item.title }}</td>
         <td class="tData">{{ item.author }}</td>
@@ -50,19 +82,15 @@
 
 <div *ngIf="issueModal" class="issueModal">
   <form (ngSubmit)="issueBook()" [formGroup]="issueData">
+    <label>Select User</label>
     <select formControlName="user_id">
-      <option
-        *ngFor="let user of users"
-        [value]="user.id"
-      >
+      <option *ngFor="let user of users" [value]="user.id">
         {{ user.name }}
       </option>
     </select>
+    <label>Select Book</label>
     <select formControlName="book_id">
-      <option
-        *ngFor="let book of books"
-        [value]="book.Id"
-      >
+      <option *ngFor="let book of books" [value]="book.Id">
         {{ book.title }}
       </option>
     </select>

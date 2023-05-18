@@ -155,12 +155,17 @@ export class BooksComponent implements OnInit {
   availableBooks: Array<Book> = [];
   unavailableBooks: Array<Book> = [];
   
+  showAll: boolean = true;
+  showUnavailable: boolean = false;
+  showAvailable: boolean = false;
+
 
   issueModal: boolean = false;
   bookModal: boolean = false;
 
   formData!: FormGroup;
   issueData!: FormGroup;
+  filterData!: FormGroup;
 
   constructor() { }
 
@@ -173,6 +178,10 @@ export class BooksComponent implements OnInit {
     //   status: new FormControl('', Validators.required),
     // })
     
+    this.filterData = new FormGroup({
+      filterValue: new FormControl('')
+    });
+
     this.issueData = new FormGroup({
       user_id: new FormControl('', Validators.required),
       book_id: new FormControl('', Validators.required)
@@ -314,6 +323,7 @@ export class BooksComponent implements OnInit {
           }
         });
         console.log(this.users);
+        this.issueData.reset();
       }
       else{
         alert('Book already issued to someone else.');
@@ -321,13 +331,31 @@ export class BooksComponent implements OnInit {
     }
   }
 
-
   toggleModal() {
     if (this.issueModal) {
       this.issueModal = !this.issueModal;
     }
     else {
       this.issueModal = !this.issueModal;
+    }
+  }
+
+  filterBooks() {
+    let ctrl = this.filterData.controls;
+    if(ctrl['filterValue'].getRawValue() == 'all') {
+      this.showAll = true;
+      this.showAvailable = false;
+      this.showUnavailable = false;
+    }
+    else if(ctrl['filterValue'].getRawValue() == 'unavailable'){
+      this.showAll = false;
+      this.showAvailable = false;
+      this.showUnavailable = true;
+    }
+    else if(ctrl['filterValue'].getRawValue() == 'available') {
+      this.showAll = false;
+      this.showAvailable = true;
+      this.showUnavailable = false;
     }
   }
 
