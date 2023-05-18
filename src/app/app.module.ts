@@ -7,6 +7,7 @@ import { BooksComponent } from './Books/Books.component';
 import { RouterModule } from '@angular/router';
 import { UsersComponent } from './Users/Users.component';
 import { CommonModule } from '@angular/common';
+import { UserDataService } from './UserData.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { CommonModule } from '@angular/common';
       }
     ])
   ],
-  providers: [],
+  providers: [UserDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

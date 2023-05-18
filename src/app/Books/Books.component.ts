@@ -1,3 +1,4 @@
+import { UserDataService } from '../UserData.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Book } from 'Models/Book';
@@ -99,58 +100,7 @@ export class BooksComponent implements OnInit {
     "status": 1
   },
   ];
-  users: Array<User> = [
-    {
-      "id": 1,
-      "name": "John Smith",
-      "books": []
-    },
-    {
-      "id": 2,
-      "name": "Emily Johnson",
-      "books": []
-    },
-    {
-      "id": 3,
-      "name": "Michael Williams",
-      "books": []
-    },
-    {
-      "id": 4,
-      "name": "Sophia Brown",
-      "books": []
-    },
-    {
-      "id": 5,
-      "name": "Daniel Jones",
-      "books": []
-    },
-    {
-      "id": 6,
-      "name": "Olivia Davis",
-      "books": []
-    },
-    {
-      "id": 7,
-      "name": "Matthew Miller",
-      "books": []
-    },
-    {
-      "id": 8,
-      "name": "Emma Wilson",
-      "books": []
-    },
-    {
-      "id": 9,
-      "name": "Christopher Taylor",
-      "books": []
-    },
-    {
-      "id": 10,
-      "name": "Ava Anderson",
-      "books": []
-    }
-  ];
+  
 
   availableBooks: Array<Book> = [];
   unavailableBooks: Array<Book> = [];
@@ -167,7 +117,9 @@ export class BooksComponent implements OnInit {
   issueData!: FormGroup;
   filterData!: FormGroup;
 
-  constructor() { }
+  constructor(private ds: UserDataService) { }
+
+  users: Array<User> = this.ds.getData();
 
   ngOnInit() {
     // this.formData = new FormGroup({
