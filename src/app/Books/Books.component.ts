@@ -71,6 +71,7 @@ export class BooksComponent implements OnInit {
       let book_id = ctrl['book_id'].getRawValue();
       let selectedBook: any;
       let flag: any;
+      
 
       this.books.forEach((item) => {
         if (item.Id == book_id) {
@@ -86,6 +87,7 @@ export class BooksComponent implements OnInit {
         this.books.forEach((item) => {
           if (item.Id == book_id) {
             selectedBook = item;
+            selectedBook.issuedOn = new Date();
             item.status = 0;
           }
         });

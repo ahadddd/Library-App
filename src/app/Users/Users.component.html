@@ -6,12 +6,14 @@
         <td>ID</td>
         <td>Name</td>
         <td>Books</td>
+        <td>Date</td>
       </tr>
 
       <tr *ngFor="let item of users">
         <td class="tData">{{item.id}}</td>
         <td class="tData">{{item.name}}</td>
         <td class="tData">{{item.books | arrayToTdElements}}</td>
+        <td class="tData">{{item.books | arrayToDate }}</td>
       </tr>
     </thead>
   </table>
